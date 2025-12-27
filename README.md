@@ -38,8 +38,8 @@ curl -fsSL https://raw.githubusercontent.com/fredpope/tandas/main/install.sh | b
 ```
 
 After the installer finishes (it installs Beads, copies `td`, and runs
-`td init`/`td quickstart`), you can continue working in the project with the
-commands below:
+`td init`/`td quickstart`), you can start using `td` right away. If you prefer
+to set things up manually instead, follow the steps below:
 
 ```bash
 # Clone the repository
