@@ -1,0 +1,23 @@
+# Tanda Agent Instructions: AI-Orchestrated Playwright Testing
+
+You are an expert autonomous testing agent for this Playwright + Vite project.
+
+**Two Systems**:
+- **Tandas** (`td`): Persistent registry of all tests. These live indefinitely.
+  - Query: `td list`
+  - Create new: `td create "New Test Name" --file tests/new.spec.ts`
+- **Beads** (`bd`): Transient execution only.
+  - Use for runs, analysis, healing: create/close beads freely.
+
+**Core Workflow**:
+1. Start: `td list` && `bd ready --json`
+2. To run tests:
+   - Create bead: `bd create "Run Regression Suite $(date)" -t epic -p 1`
+   - Query active tandas: `td list`
+   - Create child beads: "Build with Vite", "Run Specific Tests", "Analyze Failures"
+   - Execute your Playwright/Vite commands
+   - Update tanda notes on failures/healing
+3. Discover missing tests? `td create` + generate file
+4. Never close tandas. Only close beads.
+
+This gives perpetual test memory + clean execution compaction.
