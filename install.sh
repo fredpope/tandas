@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Installing Tanda - AI Test Orchestration Layer (inspired by Beads)"
+echo "🚀 Installing Tandas - AI Test Orchestration Layer (inspired by Beads)"
 echo "   For Playwright + Vite projects"
 
 # Step 1: Install official Beads CLI
@@ -26,9 +26,9 @@ if ! echo $PATH | grep -q ~/.local/bin; then
   export PATH="$PATH:~/.local/bin"
 fi
 
-# Step 4: Initialize Tanda in current dir (if in a git repo)
+# Step 4: Initialize Tandas in current dir (if in a git repo)
 if git rev-parse --git-dir > /dev/null 2>&1; then
-  echo "🔧 Initializing Tanda persistent registry..."
+  echo "🔧 Initializing Tandas persistent registry..."
   td init --quiet
 
   # Auto-discover existing Playwright tests
@@ -44,10 +44,10 @@ if git rev-parse --git-dir > /dev/null 2>&1; then
     echo "📝 Created AGENTS.md with full agent instructions"
   fi
 
-  echo "✅ Tanda installed! Run 'td list' to see your tests, 'bd ready' for execution."
-  echo "   Tell your agent: 'Orchestrate tests using Tanda (td) + Beads (bd)'"
+  echo "✅ Tandas installed! Run 'td list' to see your tests, 'bd ready' for execution."
+  echo "   Tell your agent: 'Orchestrate tests using Tandas (td) + Beads (bd)'"
 else
   echo "⚠️  Not in a git repo. Run 'git init' first, then re-run installer."
 fi
 
-echo "🌟 Tanda is open source: https://github.com/yourusername/tanda"
+echo "🌟 Tandas is open source: https://github.com/yourusername/tandas"

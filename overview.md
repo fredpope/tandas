@@ -1,12 +1,12 @@
-Tanda — Technical System Overview
-Tanda is an open-source AI orchestration layer designed specifically for end-to-end testing in Playwright-based projects (typically with Vite or similar modern frontend tooling). Its primary goal is to provide a structured, persistent, and agent-friendly way to manage, discover, execute, and evolve a test suite over the long term using AI agents.
+Tandas — Technical System Overview
+Tandas is an open-source AI orchestration layer designed specifically for end-to-end testing in Playwright-based projects (typically with Vite or similar modern frontend tooling). Its primary goal is to provide a structured, persistent, and agent-friendly way to manage, discover, execute, and evolve a test suite over the long term using AI agents.
 Core Philosophy
 Testing is fundamentally different from coding in one key way:
 
 Code features are built once and (ideally) completed.
 Tests must live indefinitely, run repeatedly, and evolve with the application.
 
-Tanda embraces this reality by combining two complementary systems:
+Tandas embraces this reality by combining two complementary systems:
 
 Persistent Test Registry (tandas) — Eternal, version-controlled home for every test and its relationships.
 Transient Execution Engine (Beads) — Short-lived, closable tasks for actually running, analyzing, and healing tests.
@@ -26,17 +26,17 @@ textproject-root/
 │   ├── db.sqlite               # Local cache for fast queries
 │   └── daemon.log              # Background sync daemon
 ├── .beads/                     # Installed by Beads (transient execution tasks)
-├── td                          # Tanda CLI (symlinked to ~/.local/bin/td)
+├── td                          # Tandas CLI (symlinked to ~/.local/bin/td)
 ├── AGENTS.md                   # Complete agent instructions
 └── .git/                       # Both .tandas and .beads travel with the repo
 Component Breakdown
-1. Tanda Registry (.tandas/ + td CLI)
+1. Tandas Registry (.tandas/ + td CLI)
 
 Purpose: The canonical, indefinitely-living source of truth for what tests exist, what they cover, and how they relate.
 Storage: Line-delimited JSON (.tandas/issues.jsonl) — identical in spirit to Beads, fully git-mergeable and branchable.
 Local Cache: SQLite database for O(1) queries without loading the full file.
 Background Daemon: Keeps SQLite in sync with JSONL (similar to Beads).
-Key Entity (Tanda):JSON{
+Key Entity (Tandas):JSON{
   "id": "td-a1b2c3d4",
   "title": "User Login Flow",
   "status": "active",           // active | flaky | deprecated (never closed)
@@ -127,5 +127,5 @@ Self-healing by design: Failures become discoverable work in Beads, updates flow
 Scales indefinitely: Test suite grows without context bloat
 Minimal footprint: Two lightweight CLIs, no servers
 
-Tanda is not just another test runner or generator — it is the operating system for AI-maintained test suites.
+Tandas is not just another test runner or generator — it is the operating system for AI-maintained test suites.
 Welcome to the future of autonomous testing.
