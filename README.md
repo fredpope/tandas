@@ -1,8 +1,8 @@
 # Tandas
 
-**AI-orchestrated test suite management for Playwright projects**
+**AI-orchestrated test suite management for Playwright, Vite, Jest, and other JS/TS testing stacks**
 
-Tandas is an open-source orchestration layer that provides persistent, structured management for end-to-end test suites. It combines a **persistent test registry** with **transient execution tasks** (via [Beads](https://github.com/steveyegge/beads)) to give AI agents and developers a powerful system for managing, discovering, and evolving tests over time.
+Tandas is an open-source orchestration layer that provides persistent, structured management for end-to-end test suites—Playwright, Vite, Jest, or any framework that produces test files/trace artifacts. It combines a **persistent test registry** with **transient execution tasks** (via [Beads](https://github.com/steveyegge/beads)) to give AI agents and developers a powerful system for managing, discovering, and evolving tests over time.
 
 ## Why Tandas?
 
@@ -57,10 +57,10 @@ chmod +x td.py
 # Fill in .tandas/env.example with your API keys, then:
 source .tandas/env.example
 
-# Discover existing tests
+# Discover existing tests (Playwright, Jest, Vitest, etc.)
 ./td.py discover
 
-# Link Playwright traces (optional)
+# Link trace artifacts (optional)
 ./td.py trace scan --dir test-results
 ./td.py trace link td-abc123 test-results/trace.zip --result fail
 ```
@@ -201,7 +201,7 @@ td generate td-abc123 --provider openai --output tests/generated/auth.spec.ts
 
 ### Trace Management
 
-Tandas records Playwright traces so you can revisit failures:
+Tandas records Playwright/Jest traces so you can revisit failures (any runner that writes trace files is supported):
 
 ```bash
 td trace scan --dir test-results --ext .zip        # queue new traces
