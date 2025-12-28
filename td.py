@@ -286,6 +286,23 @@ def write_template(path: Path, content: str, *, force: bool = False) -> bool:
     return True
 
 
+def ensure_gitignore_entries(entries: List[str]) -> List[str]:
+    gitignore = Path(".gitignore")
+    if gitignore.exists():
+        existing = gitignore.read_text().splitlines()
+    else:
+        existing = []
+
+    added = []
+    with gitignore.open("a") as fh:
+        for entry in entries:
+            if entry not in existing:
+                fh.write(entry + "\n")
+                existing.append(entry)
+                added.append(entry)
+    return added
+
+
 def normalize_trace_path(path: str) -> str:
     base = Path.cwd().resolve()
     candidate = Path(path)
@@ -852,6 +869,16 @@ def cmd_quickstart(args):
     else:
         created_app = False
         print(f"{YELLOW}{app_config_path} already exists. Skipping.{RESET}")
+
+    gitignore_entries = [
+        ".tandas/env.example",
+        ".tandas/env.local",
+        ".env",
+        ".env.local",
+    ]
+    added_gitignore = ensure_gitignore_entries(gitignore_entries)
+    if added_gitignore:
+        print(f"{GREEN}Updated .gitignore with: {', '.join(added_gitignore)}{RESET}")
 
     print(f"{GREEN if created_config else YELLOW}Config: {config_path}{RESET}")
     print(f"{GREEN if created_env else YELLOW}Env example: {env_example_path}{RESET}")

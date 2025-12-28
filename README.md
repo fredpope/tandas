@@ -72,6 +72,9 @@ you can wire up providers immediately. Customize the generated files, export the
 API keys (or source `.tandas/env.example`), and then run `td generate <id>` to
 draft a spec with your chosen provider.
 
+> `td quickstart` automatically ensures `.tandas/env.example`, `.tandas/env.local`, and `.env*`
+> entries are present in `.gitignore` so you don’t accidentally commit secrets.
+
 ### System-wide Installation
 
 ```bash
@@ -110,6 +113,8 @@ If the binary is not on your `PATH`, set the `TD_DAEMON_BIN` environment
 variable or pass `--bin /path/to/td-daemon` on each command.
 
 ## Usage
+
+See [examples/README.md](examples/README.md) for stack-specific snippets.
 
 ### Basic Commands
 
